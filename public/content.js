@@ -4,11 +4,14 @@
 (() => {
   // ─── Field keyword maps ───────────────────────────────────────────────────
   const FIELD_MAP = {
+    title: ["title", "salutation", "prefix", "honorific", "mr", "ms", "mrs", "dr"],
     firstName: ["first name", "firstname", "first-name", "fname", "given name"],
     lastName: ["last name", "lastname", "last-name", "lname", "surname", "family name"],
     fullName: ["full name", "fullname", "your name", "name", "candidate name", "applicant name"],
     email: ["email", "e-mail", "email address", "work email", "contact email"],
     phone: ["phone", "mobile", "cell", "telephone", "contact number", "phone number", "mobile number"],
+    countryCode: ["country code", "isd code", "dial code", "phone code", "calling code", "std code"],
+    dob: ["date of birth", "dob", "birth date", "birthday", "date of birth (dd/mm/yyyy)", "birth day"],
     address: ["address", "street address", "home address", "current address", "location"],
     city: ["city", "town", "municipality"],
     state: ["state", "province", "region"],
@@ -85,25 +88,56 @@
 
   function fillSelectField(select, value) {
     if (!value) return false;
-    const val = value.toLowerCase();
+    const val = value.toLowerCase().trim();
+
+    // Pass 1 — exact match on text or value
     for (const option of select.options) {
-      if (option.text.toLowerCase().includes(val) || option.value.toLowerCase().includes(val)) {
+      if (
+        option.text.toLowerCase().trim() === val ||
+        option.value.toLowerCase().trim() === val
+      ) {
         select.value = option.value;
         select.dispatchEvent(new Event("change", { bubbles: true }));
         return true;
       }
     }
+
+    // Pass 2 — option text/value starts with search value
+    for (const option of select.options) {
+      if (
+        option.text.toLowerCase().trim().startsWith(val) ||
+        option.value.toLowerCase().trim().startsWith(val)
+      ) {
+        select.value = option.value;
+        select.dispatchEvent(new Event("change", { bubbles: true }));
+        return true;
+      }
+    }
+
+    // Pass 3 — word boundary match (prevents "india" matching "british indian ocean territory")
+    for (const option of select.options) {
+      const words = option.text.toLowerCase().trim().split(/\s+/);
+      if (words[0] === val || words.join(" ") === val) {
+        select.value = option.value;
+        select.dispatchEvent(new Event("change", { bubbles: true }));
+        return true;
+      }
+    }
+
     return false;
   }
 
   // ─── Core fill logic ──────────────────────────────────────────────────────
   function resolveValue(fieldKey, profile) {
     switch (fieldKey) {
+      case "title": return profile.title || "";
       case "firstName": return profile.firstName || profile.fullName?.split(" ")[0] || "";
       case "lastName": return profile.lastName || profile.fullName?.split(" ").slice(1).join(" ") || "";
       case "fullName": return profile.fullName || `${profile.firstName || ""} ${profile.lastName || ""}`.trim();
       case "email": return profile.email || "";
       case "phone": return profile.phone || "";
+      case "countryCode": return profile.countryCode || "";
+      case "dob": return profile.dob || "";
       case "address": return profile.address || "";
       case "city": return profile.city || "";
       case "state": return profile.state || "";

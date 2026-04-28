@@ -95,13 +95,18 @@ export default function App() {
         <div className="tab-content profile-tab">
 
           <SectionHeader icon="👤" title="Personal Info" />
+          <FormField label="Title" name="title" value={profile.title} onChange={updateField} placeholder="Mr. / Ms. / Dr." />
           <div className="field-grid">
             <FormField label="First Name" name="firstName" value={profile.firstName} onChange={updateField} placeholder="Rahul" required />
             <FormField label="Last Name" name="lastName" value={profile.lastName} onChange={updateField} placeholder="Sharma" required />
           </div>
           <FormField label="Full Name" name="fullName" value={profile.fullName} onChange={updateField} placeholder="Rahul Sharma" />
           <FormField label="Email" name="email" value={profile.email} onChange={updateField} type="email" placeholder="rahul@email.com" required />
-          <FormField label="Phone" name="phone" value={profile.phone} onChange={updateField} type="tel" placeholder="+91 9876543210" required />
+          <div className="field-grid">
+            <FormField label="Country Code" name="countryCode" value={profile.countryCode} onChange={updateField} placeholder="+91" />
+            <FormField label="Phone" name="phone" value={profile.phone} onChange={updateField} type="tel" placeholder="9876543210" required />
+          </div>
+          <FormField label="Date of Birth" name="dob" value={profile.dob} onChange={updateField} type="date" placeholder="DD/MM/YYYY" />
 
           <SectionHeader icon="📍" title="Location" />
           <FormField label="Address" name="address" value={profile.address} onChange={updateField} placeholder="123 MG Road" />

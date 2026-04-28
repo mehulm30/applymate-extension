@@ -4,11 +4,14 @@ import { useState, useEffect, useCallback } from "react";
 
 const DEFAULT_PROFILE = {
   // Personal
+  title: "",
   fullName: "",
   firstName: "",
   lastName: "",
   email: "",
   phone: "",
+  countryCode: "",
+  dob: "",
   address: "",
   city: "",
   state: "",
