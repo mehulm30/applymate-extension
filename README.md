@@ -13,9 +13,6 @@ ApplyMate is a Chrome extension that lets you store your profile once and automa
   &nbsp;&nbsp;
   <img src="screenshots/about.png" width="30%" alt="About Tab" />
 </p>
-<p align="center">
-  <em>Autofill Tab &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Profile Tab &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; About Tab</em>
-</p>
 ---
 
 ## ✨ Features
