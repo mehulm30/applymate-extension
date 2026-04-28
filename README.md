@@ -5,6 +5,18 @@
 ApplyMate is a Chrome extension that lets you store your profile once and automatically fill job application forms across LinkedIn, Naukri, Workday, Indeed, and hundreds of other job boards — with a single click.
 
 ---
+📸 Screenshots
+<p align="center">
+  <img src="screenshots/autofill.png" width="30%" alt="Autofill Tab" />
+  &nbsp;&nbsp;
+  <img src="screenshots/profile.png" width="30%" alt="Profile Tab" />
+  &nbsp;&nbsp;
+  <img src="screenshots/about.png" width="30%" alt="About Tab" />
+</p>
+<p align="center">
+  <em>Autofill Tab &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Profile Tab &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; About Tab</em>
+</p>
+---
 
 ## ✨ Features
 
